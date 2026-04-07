@@ -2,139 +2,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Motive — Don't just block. Understand why. A mindful screen time app for iOS.">
-    <title>Motive — Don't just block. Understand why.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#fff8f1">
+    <meta name="description" content="Motive helps you understand why you scroll — and finally stop. A mindful screen time app for iOS.">
+    <meta property="og:title" content="Motive — Don't just block. Understand why.">
+    <meta property="og:description" content="A mindful screen time app for iOS. Coming soon.">
+    <meta property="og:type" content="website">
+    <title>Motive — Understand why you scroll</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg: #fafaf9;
-            --bg-secondary: #f5f5f4;
-            --text: #1c1917;
-            --text-muted: #57534e;
-            --text-faint: #a8a29e;
-            --border: rgba(28, 25, 23, 0.06);
+            --bg: #fff8f1;
+            --bg-card: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #6b6155;
+            --text-faint: #a89888;
             --accent: #ea580c;
-            --serif: 'Instrument Serif', Georgia, serif;
-            --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+            --accent-soft: #fed7aa;
+            --border: rgba(26, 26, 26, 0.06);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0c0a09;
-                --bg-secondary: #1c1917;
-                --text: #fafaf9;
-                --text-muted: #a8a29e;
-                --text-faint: #57534e;
-                --border: rgba(250, 250, 249, 0.06);
-                --accent: #fb923c;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
         body {
-            font-family: var(--sans);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            font-feature-settings: "ss01", "cv01";
+            line-height: 1.55;
+            font-size: 16px;
             -webkit-font-smoothing: antialiased;
+            font-feature-settings: "cv11", "ss01";
         }
 
         .container {
-            max-width: 720px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
+        /* Nav */
         nav {
-            padding: 32px 0;
+            padding: 24px 0;
         }
-
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            font-family: var(--serif);
-            font-size: 24px;
-            font-style: italic;
+            font-size: 18px;
+            font-weight: 700;
             letter-spacing: -0.02em;
         }
-
-        .nav-link {
+        .logo-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            margin-top: -2px;
+        }
+        .nav-cta {
+            font-size: 14px;
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            transition: all 0.2s;
         }
-
-        .nav-link:hover {
+        .nav-cta:hover {
             color: var(--text);
+            border-color: var(--text);
         }
 
+        /* Hero */
         .hero {
-            padding: 80px 0 120px;
+            padding: 64px 0 80px;
             text-align: center;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--accent);
-            background: rgba(234, 88, 12, 0.08);
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
             margin-bottom: 32px;
-            letter-spacing: 0.02em;
+            box-shadow: var(--shadow);
         }
-
-        @media (prefers-color-scheme: dark) {
-            .badge {
-                background: rgba(251, 146, 60, 0.08);
-            }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         h1 {
-            font-family: var(--serif);
-            font-size: clamp(48px, 9vw, 88px);
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            font-weight: 400;
+            font-size: clamp(40px, 9vw, 56px);
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            margin-bottom: 20px;
         }
-
-        h1 em {
+        h1 .accent {
             color: var(--accent);
+            font-style: italic;
+            font-weight: 700;
         }
 
-        .tagline {
-            font-size: 20px;
+        .hero-subtitle {
+            font-size: 17px;
             color: var(--text-muted);
-            max-width: 540px;
-            margin: 0 auto 48px;
-            line-height: 1.5;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+            max-width: 440px;
+            margin: 0 auto 36px;
+            line-height: 1.55;
         }
 
         .cta {
@@ -147,196 +151,207 @@
             text-decoration: none;
             border-radius: 100px;
             font-size: 15px;
-            font-weight: 500;
-            transition: transform 0.2s, opacity 0.2s;
+            font-weight: 600;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
-
         .cta:hover {
             transform: translateY(-1px);
-            opacity: 0.9;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        .cta:active { transform: translateY(0); }
+
+        .cta-small {
+            display: block;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-faint);
         }
 
-        .cta-secondary {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-        }
-
+        /* Section */
         section {
-            padding: 80px 0;
+            padding: 64px 0;
         }
 
-        .section-label {
+        .section-eyebrow {
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            display: block;
+            text-align: center;
         }
 
         h2 {
-            font-family: var(--serif);
-            font-size: clamp(32px, 5vw, 48px);
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            margin-bottom: 24px;
-            font-weight: 400;
-            max-width: 600px;
-        }
-
-        .section-text {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 540px;
-            line-height: 1.6;
-        }
-
-        .features {
-            display: grid;
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 64px;
-        }
-
-        .feature {
-            background: var(--bg);
-            padding: 40px;
-        }
-
-        .feature-num {
-            font-family: var(--serif);
-            font-size: 14px;
-            color: var(--text-faint);
-            font-style: italic;
+            font-size: clamp(28px, 6vw, 36px);
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            text-align: center;
             margin-bottom: 16px;
         }
 
-        .feature h3 {
-            font-family: var(--serif);
-            font-size: 28px;
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .feature p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .quote {
+        .section-sub {
             text-align: center;
-            padding: 120px 0;
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 440px;
+            margin: 0 auto 48px;
         }
 
-        .quote blockquote {
-            font-family: var(--serif);
-            font-size: clamp(28px, 4.5vw, 44px);
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            font-style: italic;
-            max-width: 620px;
-            margin: 0 auto 24px;
-            font-weight: 400;
+        /* Features */
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .feature {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+        .feature:hover {
+            transform: translateY(-2px);
+        }
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-soft);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--accent);
+            stroke-width: 2;
+            fill: none;
+        }
+        .feature h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .feature p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.55;
         }
 
-        .quote cite {
-            font-style: normal;
-            font-size: 13px;
-            color: var(--text-faint);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
+        /* Stats */
         .stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 32px;
+        }
+        @media (min-width: 480px) {
+            .stats { grid-template-columns: repeat(3, 1fr); }
+        }
+        .stat {
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            overflow: hidden;
-            margin-top: 64px;
-        }
-
-        @media (max-width: 600px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .stat {
-            background: var(--bg);
-            padding: 40px 24px;
+            padding: 24px 20px;
             text-align: center;
+            box-shadow: var(--shadow);
         }
-
         .stat-num {
-            font-family: var(--serif);
-            font-size: 56px;
-            line-height: 1;
+            font-size: 36px;
+            font-weight: 700;
             color: var(--accent);
-            margin-bottom: 12px;
-            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
         }
-
         .stat-label {
             font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
+        /* Quote */
+        .quote-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .quote {
+            font-size: clamp(22px, 5vw, 28px);
+            line-height: 1.3;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .quote-mark {
+            font-size: 48px;
+            color: var(--accent);
+            line-height: 1;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px 32px;
+            text-align: center;
+            margin: 32px 0 64px;
+            box-shadow: var(--shadow);
+        }
+        .final-cta h2 {
+            margin-bottom: 12px;
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 15px;
+            max-width: 360px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
         footer {
-            padding: 64px 0 48px;
+            padding: 32px 0 48px;
+            text-align: center;
             border-top: 1px solid var(--border);
-            margin-top: 80px;
         }
-
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
         .footer-text {
             font-size: 13px;
             color: var(--text-faint);
+            margin-bottom: 12px;
         }
-
         .footer-links {
             display: flex;
-            gap: 24px;
+            justify-content: center;
+            gap: 20px;
         }
-
         .footer-link {
             font-size: 13px;
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s;
         }
+        .footer-link:hover { color: var(--text); }
 
-        .footer-link:hover {
-            color: var(--text);
-        }
-
-        @media (max-width: 600px) {
-            .hero {
-                padding: 48px 0 80px;
-            }
-            section {
-                padding: 60px 0;
-            }
-            .feature {
-                padding: 32px 24px;
-            }
+        @media (max-width: 480px) {
+            .hero { padding: 48px 0 64px; }
+            section { padding: 48px 0; }
+            .feature { padding: 20px; }
+            .final-cta { padding: 36px 24px; }
         }
     </style>
 </head>
@@ -344,123 +359,117 @@
 
     <nav>
         <div class="container">
-            <span class="logo">Motive</span>
-            <a href="#waitlist" class="nav-link">Coming soon</a>
+            <span class="logo"><span class="logo-dot"></span>Motive</span>
+            <a href="#waitlist" class="nav-cta">Join waitlist</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <span class="badge">Coming to iOS · 2026</span>
-            <h1>Don't just block.<br><em>Understand why.</em></h1>
-            <p class="tagline">
-                Most screen time apps tell you how much you scroll.
-                Motive helps you understand why — and finally stop.
+            <span class="hero-badge">Coming to iOS — 2026</span>
+            <h1>Don't just block.<br><span class="accent">Understand why.</span></h1>
+            <p class="hero-subtitle">
+                A mindful screen time app that helps you see your patterns,
+                recognize your triggers, and finally take back your time.
             </p>
-            <div class="cta-group">
-                <a href="#waitlist" class="cta">Join the waitlist →</a>
-                <a href="#how" class="cta cta-secondary">How it works</a>
-            </div>
+            <a href="#waitlist" class="cta">
+                Join the waitlist
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path d="M5 12h14M13 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <span class="cta-small">No spam. Just one email when we launch.</span>
         </div>
     </header>
 
-    <section id="how">
+    <section>
         <div class="container">
-            <div class="section-label">How it works</div>
-            <h2>Three steps to mindful phone use.</h2>
-            <p class="section-text">
-                You don't need more willpower. You need a system that helps you
-                see what's actually happening — and gives you better choices.
+            <span class="section-eyebrow">How it works</span>
+            <h2>Three steps to mindful use</h2>
+            <p class="section-sub">
+                You don't need more willpower. You need a system that
+                helps you see what's happening — and gives you better choices.
             </p>
 
             <div class="features">
                 <div class="feature">
-                    <div class="feature-num">01</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+                    </div>
                     <h3>Block with intention</h3>
-                    <p>
-                        Choose the apps that drain you. Set rules that fit
-                        your day — bedtime wind-down, morning protection,
-                        focus sessions, time limits.
-                    </p>
+                    <p>Choose the apps that drain you. Set rules that fit your day — bedtime wind-down, morning protection, focus sessions.</p>
                 </div>
+
                 <div class="feature">
-                    <div class="feature-num">02</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    </div>
                     <h3>Notice the trigger</h3>
-                    <p>
-                        Every time you reach for a blocked app, Motive asks
-                        one question: <em>why?</em> One tap. One second.
-                        After 14 days, your patterns become impossible to ignore.
-                    </p>
+                    <p>Every time you reach for a blocked app, Motive asks one question: <em>why?</em> One tap. After 14 days, your patterns become clear.</p>
                 </div>
+
                 <div class="feature">
-                    <div class="feature-num">03</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+                    </div>
                     <h3>See the difference</h3>
-                    <p>
-                        Motive correlates your screen time with your sleep
-                        and your mood. The impact stops being abstract —
-                        it becomes personal evidence.
-                    </p>
+                    <p>Motive correlates your screen time with sleep and mood. The impact stops being abstract — it becomes personal evidence.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="quote">
+    <section class="quote-section">
         <div class="container">
-            <blockquote>
-                "You're not addicted.<br>
-                Your brain is being<br>
-                exploited by design."
-            </blockquote>
-            <cite>— The Motive Manifesto</cite>
+            <span class="quote-mark">"</span>
+            <p class="quote">You're not addicted. Your brain is being exploited by design.</p>
         </div>
     </section>
 
-    <section id="why">
+    <section>
         <div class="container">
-            <div class="section-label">Why it matters</div>
-            <h2>The numbers you don't think about.</h2>
-            <p class="section-text">
+            <span class="section-eyebrow">The numbers</span>
+            <h2>What you don't think about</h2>
+            <p class="section-sub">
                 Most of us don't pick up our phones intentionally.
-                We just… find them in our hands.
+                We just find them in our hands.
             </p>
 
             <div class="stats">
                 <div class="stat">
                     <div class="stat-num">96</div>
-                    <div class="stat-label">phone checks per day,<br>on average</div>
+                    <div class="stat-label">phone checks per day, on average</div>
                 </div>
                 <div class="stat">
                     <div class="stat-num">70%</div>
-                    <div class="stat-label">of phone pickups<br>are automatic</div>
+                    <div class="stat-label">of phone pickups are automatic</div>
                 </div>
                 <div class="stat">
                     <div class="stat-num">76</div>
-                    <div class="stat-label">days per year on<br>screens, gone</div>
+                    <div class="stat-label">days a year on screens, gone</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="waitlist">
-        <div class="container" style="text-align: center;">
-            <div class="section-label">Coming soon</div>
-            <h2 style="margin-left: auto; margin-right: auto;">
-                Be first to try Motive.
-            </h2>
-            <p class="section-text" style="margin-left: auto; margin-right: auto; margin-bottom: 48px;">
-                Launching on iOS in 2026. The first 1,000 users get
-                lifetime access at half price.
-            </p>
-            <a href="mailto:tass.mehmetcan@gmail.com?subject=Motive%20Waitlist" class="cta">
-                Join the waitlist →
-            </a>
+        <div class="container">
+            <div class="final-cta">
+                <h2>Be first to try Motive</h2>
+                <p>Launching on iOS in 2026. Join the waitlist and we'll let you know when it's ready.</p>
+                <a href="mailto:tass.mehmetcan@gmail.com?subject=Motive%20Waitlist&body=I'd%20like%20to%20be%20notified%20when%20Motive%20launches." class="cta">
+                    Join the waitlist
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <span class="footer-text">© 2026 Motive · Made with intention</span>
+            <div class="footer-text">© 2026 Motive · Built with intention</div>
             <div class="footer-links">
                 <a href="mailto:tass.mehmetcan@gmail.com" class="footer-link">Contact</a>
                 <a href="#" class="footer-link">Privacy</a>
