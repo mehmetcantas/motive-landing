@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#fff8f1">
-    <meta name="description" content="Motive helps you understand why you scroll — and finally stop. A mindful screen time app for iOS.">
+    <meta name="description" content="Motive — A mindful screen time app for iOS. Coming soon.">
     <meta property="og:title" content="Motive — Don't just block. Understand why.">
     <meta property="og:description" content="A mindful screen time app for iOS. Coming soon.">
-    <meta property="og:type" content="website">
     <title>Motive — Understand why you scroll</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,97 +16,82 @@
     <style>
         :root {
             --bg: #fff8f1;
-            --bg-card: #ffffff;
             --text: #1a1a1a;
             --text-muted: #6b6155;
-            --text-faint: #a89888;
             --accent: #ea580c;
-            --accent-soft: #fed7aa;
-            --border: rgba(26, 26, 26, 0.06);
-            --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.55;
-            font-size: 16px;
             -webkit-font-smoothing: antialiased;
-            font-feature-settings: "cv11", "ss01";
+            display: flex;
+            flex-direction: column;
+            min-height: 100dvh;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Nav */
         nav {
-            padding: 24px 0;
-        }
-        nav .container {
+            padding: 28px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
         .logo-dot {
-            display: inline-block;
             width: 8px;
             height: 8px;
             background: var(--accent);
             border-radius: 50%;
-            margin-right: 6px;
-            vertical-align: middle;
-            margin-top: -2px;
         }
-        .nav-cta {
+
+        .nav-link {
             font-size: 14px;
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 14px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            transition: all 0.2s;
-        }
-        .nav-cta:hover {
-            color: var(--text);
-            border-color: var(--text);
         }
 
-        /* Hero */
-        .hero {
-            padding: 64px 0 80px;
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 32px;
             text-align: center;
         }
 
-        .hero-badge {
+        .badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(234, 88, 12, 0.08);
             border-radius: 100px;
             font-size: 13px;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--accent);
             margin-bottom: 32px;
-            box-shadow: var(--shadow);
         }
-        .hero-badge::before {
+
+        .badge::before {
             content: '';
             width: 6px;
             height: 6px;
@@ -115,366 +99,108 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
         }
 
         h1 {
-            font-size: clamp(40px, 9vw, 56px);
-            line-height: 1.05;
+            font-size: clamp(40px, 8vw, 80px);
+            line-height: 1.02;
             font-weight: 700;
-            letter-spacing: -0.035em;
-            margin-bottom: 20px;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            max-width: 900px;
         }
+
         h1 .accent {
             color: var(--accent);
             font-style: italic;
-            font-weight: 700;
         }
 
-        .hero-subtitle {
-            font-size: 17px;
+        p.tagline {
+            font-size: clamp(16px, 1.8vw, 19px);
             color: var(--text-muted);
-            max-width: 440px;
-            margin: 0 auto 36px;
-            line-height: 1.55;
+            max-width: 520px;
+            line-height: 1.5;
+            margin-bottom: 40px;
         }
 
         .cta {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
+            gap: 10px;
+            padding: 16px 32px;
             background: var(--text);
             color: var(--bg);
             text-decoration: none;
             border-radius: 100px;
             font-size: 15px;
             font-weight: 600;
-            transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.15s;
         }
-        .cta:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        }
+
+        .cta:hover { transform: translateY(-1px); }
         .cta:active { transform: translateY(0); }
 
-        .cta-small {
-            display: block;
-            margin-top: 14px;
-            font-size: 13px;
-            color: var(--text-faint);
-        }
-
-        /* Section */
-        section {
-            padding: 64px 0;
-        }
-
-        .section-eyebrow {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 12px;
-            display: block;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: clamp(28px, 6vw, 36px);
-            line-height: 1.15;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .section-sub {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 16px;
-            max-width: 440px;
-            margin: 0 auto 48px;
-        }
-
-        /* Features */
-        .features {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .feature {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
-        }
-        .feature:hover {
-            transform: translateY(-2px);
-        }
-        .feature-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--accent-soft);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-        .feature-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--accent);
-            stroke-width: 2;
-            fill: none;
-        }
-        .feature h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-        .feature p {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-top: 32px;
-        }
-        @media (min-width: 480px) {
-            .stats { grid-template-columns: repeat(3, 1fr); }
-        }
-        .stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-        .stat-num {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
-        }
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* Quote */
-        .quote-section {
-            padding: 80px 0;
-            text-align: center;
-        }
-        .quote {
-            font-size: clamp(22px, 5vw, 28px);
-            line-height: 1.3;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .quote-mark {
-            font-size: 48px;
-            color: var(--accent);
-            line-height: 1;
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        /* CTA Section */
-        .final-cta {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
-            margin: 32px 0 64px;
-            box-shadow: var(--shadow);
-        }
-        .final-cta h2 {
-            margin-bottom: 12px;
-        }
-        .final-cta p {
-            color: var(--text-muted);
-            margin-bottom: 28px;
-            font-size: 15px;
-            max-width: 360px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
         footer {
-            padding: 32px 0 48px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-        .footer-text {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 13px;
-            color: var(--text-faint);
-            margin-bottom: 12px;
+            color: var(--text-muted);
         }
+
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 24px;
         }
-        .footer-link {
-            font-size: 13px;
+
+        .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s;
         }
-        .footer-link:hover { color: var(--text); }
 
-        @media (max-width: 480px) {
-            .hero { padding: 48px 0 64px; }
-            section { padding: 48px 0; }
-            .feature { padding: 20px; }
-            .final-cta { padding: 36px 24px; }
+        @media (max-width: 600px) {
+            nav, footer { padding: 20px 24px; }
+            main { padding: 0 24px; }
+            footer {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            h1 { margin-bottom: 20px; }
+            p.tagline { margin-bottom: 32px; }
+            .badge { margin-bottom: 24px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="container">
-            <span class="logo"><span class="logo-dot"></span>Motive</span>
-            <a href="#waitlist" class="nav-cta">Join waitlist</a>
-        </div>
+        <span class="logo"><span class="logo-dot"></span>Motive</span>
+        <a href="mailto:tass.mehmetcan@gmail.com?subject=Motive%20Waitlist" class="nav-link">Contact</a>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <span class="hero-badge">Coming to iOS — 2026</span>
-            <h1>Don't just block.<br><span class="accent">Understand why.</span></h1>
-            <p class="hero-subtitle">
-                A mindful screen time app that helps you see your patterns,
-                recognize your triggers, and finally take back your time.
-            </p>
-            <a href="#waitlist" class="cta">
-                Join the waitlist
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                    <path d="M5 12h14M13 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <span class="cta-small">No spam. Just one email when we launch.</span>
-        </div>
-    </header>
-
-    <section>
-        <div class="container">
-            <span class="section-eyebrow">How it works</span>
-            <h2>Three steps to mindful use</h2>
-            <p class="section-sub">
-                You don't need more willpower. You need a system that
-                helps you see what's happening — and gives you better choices.
-            </p>
-
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-                    </div>
-                    <h3>Block with intention</h3>
-                    <p>Choose the apps that drain you. Set rules that fit your day — bedtime wind-down, morning protection, focus sessions.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                    </div>
-                    <h3>Notice the trigger</h3>
-                    <p>Every time you reach for a blocked app, Motive asks one question: <em>why?</em> One tap. After 14 days, your patterns become clear.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
-                    </div>
-                    <h3>See the difference</h3>
-                    <p>Motive correlates your screen time with sleep and mood. The impact stops being abstract — it becomes personal evidence.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="quote-section">
-        <div class="container">
-            <span class="quote-mark">"</span>
-            <p class="quote">You're not addicted. Your brain is being exploited by design.</p>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <span class="section-eyebrow">The numbers</span>
-            <h2>What you don't think about</h2>
-            <p class="section-sub">
-                Most of us don't pick up our phones intentionally.
-                We just find them in our hands.
-            </p>
-
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-num">96</div>
-                    <div class="stat-label">phone checks per day, on average</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num">70%</div>
-                    <div class="stat-label">of phone pickups are automatic</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num">76</div>
-                    <div class="stat-label">days a year on screens, gone</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="waitlist">
-        <div class="container">
-            <div class="final-cta">
-                <h2>Be first to try Motive</h2>
-                <p>Launching on iOS in 2026. Join the waitlist and we'll let you know when it's ready.</p>
-                <a href="mailto:tass.mehmetcan@gmail.com?subject=Motive%20Waitlist&body=I'd%20like%20to%20be%20notified%20when%20Motive%20launches." class="cta">
-                    Join the waitlist
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                        <path d="M5 12h14M13 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
+    <main>
+        <span class="badge">Coming to iOS — 2026</span>
+        <h1>Don't just block.<br><span class="accent">Understand why.</span></h1>
+        <p class="tagline">A mindful screen time app that helps you see your patterns, recognize your triggers, and finally take back your time.</p>
+        <a href="mailto:tass.mehmetcan@gmail.com?subject=Motive%20Waitlist&body=I'd%20like%20to%20be%20notified%20when%20Motive%20launches." class="cta">
+            Join the waitlist
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-text">© 2026 Motive · Built with intention</div>
-            <div class="footer-links">
-                <a href="mailto:tass.mehmetcan@gmail.com" class="footer-link">Contact</a>
-                <a href="#" class="footer-link">Privacy</a>
-                <a href="#" class="footer-link">Terms</a>
-            </div>
+        <span>© 2026 Motive</span>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
         </div>
     </footer>
 
